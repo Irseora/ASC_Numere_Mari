@@ -40,6 +40,8 @@ namespace BigInts
                 digits.Add((byte)(data[i] - '0'));
         }
 
+        // TODO: Byte Array Constructor
+
         // Validare
         private bool isValid(string v)
         {
@@ -58,7 +60,21 @@ namespace BigInts
             return true;
         }
 
-        // Adunare
+        // Transforma tabloul de bytes intr-un string
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = digits.Count - 1; i >= 0; i--)
+                sb.Append(digits[i].ToString());
+
+            return sb.ToString();
+        }
+
+        /// <summary> Adunarea a 2 numere mari </summary>
+        /// <param name="b1"> Primul termen al adunarii </param>
+        /// <param name="b2"> Al doilea termen al adunarii </param>
+        /// <returns> Suma celor 2 numere mari </returns>
         public static BigInt operator + (BigInt b1, BigInt b2)
         {
             BigInt result = new BigInt();
@@ -77,22 +93,13 @@ namespace BigInts
             return result;
         }
 
-        // Transforma tabloul de bytes intr-un string
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-
-            for (int i = digits.Count - 1; i >= 0; i--)
-                sb.Append(digits[i].ToString());
-
-            return sb.ToString();
-        }
-
         // TODO:
-        // public static BigInt operator * (); // algoritmii de pe hartie
-        // public static BigInt operator - ();
+        // public static BigInt operator - (); // algoritmii de pe hartie
+        // public static BigInt operator * ();
         // public static BigInt operator / ();
-        // public static BigInt operator = ();
+        // public static BigInt operator % ();
+        // public static BigInt operator == ();
+        // public static BigInt operator != ();
         // public static BigInt operator < ();
         // public static BigInt operator <= ();
         // public static BigInt operator > ();
