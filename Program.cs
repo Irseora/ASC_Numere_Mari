@@ -9,8 +9,6 @@ using BigInts;
 // Operatorii relationali: <, >, <=, >=, operatorii de egalitate/inegalitate. 
 // Precizari: Numar mare = un numar care nu poate fi reprezentat pe int/long etc. Numarul poate avea sute/mii/etc. cifre
 
-// {Environment.NewLine}
-
 namespace ASC_Numere_Mari
 {
     class Program

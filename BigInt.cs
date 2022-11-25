@@ -89,12 +89,53 @@ namespace BigInts
             }
 
             result.data = result.digits.ToString();
+            return result;
+        }
+
+        /// <summary> Scaderea a 2 numere mari </summary>
+        /// <param name="b1"> Primul termen al scaderii </param>
+        /// <param name="b2"> Al doilea termen al scaderii </param>
+        /// <returns> Diferenta celor 2 numere mari </returns>
+        public static BigInt operator - (BigInt b1, BigInt b2)
+        {
+            BigInt result = new BigInt();
+
+            int maxLength;
+            if (b1.digits.Count > b2.digits.Count)
+                maxLength = b1.digits.Count - 1;
+            else
+                maxLength = b2.digits.Count - 1;
+
+            for (int i = maxLength; i >= 0; i--)
+            {
+                int digit1 = i < b1.digits.Count ? b1.digits[i] : 0;
+                int digit2 = i < b1.digits.Count ? b1.digits[i] : 0;
+
+                if (digit1 > digit2)
+                    result.digits.Add((byte)(digit1 - digit2));
+                else
+                    result.digits.Add((byte)((digit1 + 10) - digit2));
+            }
+
+            result.data = result.digits.ToString();
+            return result;
+        }
+
+        /// <summary> Inmultirea a 2 numere mari </summary>
+        /// <param name="b1"> Primul termen al inmultirii </param>
+        /// <param name="b2"> Al doilea termen al inmultirii </param>
+        /// <returns> Rezultatul inmultirii celor 2 numere mari </returns>
+        public static BigInt operator * (BigInt b1, BigInt b2)
+        {
+            BigInt result = new BigInt();
+
+            
 
             return result;
         }
 
         // TODO:
-        // public static BigInt operator - (); // algoritmii de pe hartie
+        // algoritmii de pe hartie
         // public static BigInt operator * ();
         // public static BigInt operator / ();
         // public static BigInt operator % ();
@@ -104,5 +145,7 @@ namespace BigInts
         // public static BigInt operator <= ();
         // public static BigInt operator > ();
         // public static BigInt operator >= ();
+        // Ridicare la putere
+        // Radacina patrata
     }
 }

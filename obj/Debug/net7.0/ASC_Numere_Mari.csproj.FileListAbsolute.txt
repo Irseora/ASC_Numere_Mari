@@ -1,0 +1,5 @@
+C:\Users\Vivi\Documents\ASC_Numere_Mari\obj\Debug\net7.0\ASC_Numere_Mari.csproj.AssemblyReference.cache
+C:\Users\Vivi\Documents\ASC_Numere_Mari\obj\Debug\net7.0\ASC_Numere_Mari.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Vivi\Documents\ASC_Numere_Mari\obj\Debug\net7.0\ASC_Numere_Mari.AssemblyInfoInputs.cache
+C:\Users\Vivi\Documents\ASC_Numere_Mari\obj\Debug\net7.0\ASC_Numere_Mari.AssemblyInfo.cs
+C:\Users\Vivi\Documents\ASC_Numere_Mari\obj\Debug\net7.0\ASC_Numere_Mari.csproj.CoreCompileInputs.cache
