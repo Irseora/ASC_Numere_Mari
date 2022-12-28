@@ -85,14 +85,26 @@ namespace BigInts
         {
             BigInt result = new BigInt();
 
-            for (int i = 0, carry = 0; i < b1.digits.Count || i < b2.digits.Count; i++)
+            if (b1.sign == b2.sign)
             {
-                int digit1 = i < b1.digits.Count ? b1.digits[i] : 0;
-                int digit2 = i < b1.digits.Count ? b1.digits[i] : 0;
+                result.sign = b1.sign;
 
-                result.digits.Add((byte)((digit1 + digit2 + carry) % 10));
-                carry = (digit1 + digit2 + carry) / 10;
+                for (int i = 0, carry = 0; i < b1.digits.Count || i < b2.digits.Count; i++)
+                {
+                    // TODO: Digit_i if it exists, 0 otherwise
+                    int digit1 = i < b1.digits.Count ? b1.digits[i] : 0;
+                    int digit2 = i < b1.digits.Count ? b1.digits[i] : 0;
+
+                    result.digits.Add((byte)((digit1 + digit2 + carry) % 10));
+                    carry = (digit1 + digit2 + carry) / 10;
+                }
             }
+            else
+            {
+                
+            }
+
+            
 
             result.data = result.digits.ToString();
             return result;
@@ -105,6 +117,38 @@ namespace BigInts
         public static BigInt operator - (BigInt b1, BigInt b2)
         {
             BigInt result = new BigInt();
+
+            if (b1 > b2)
+            {
+                BigInt aux = b1;
+                b1 = b2;
+                b2 = aux;
+                result.sign = -1;
+            }
+
+            for (int i = 0; i < b1.digits.Count; i++)
+            {
+                // TODO: Digit_i if it exists, 0 otherwise
+                int digit1 = i < b1.digits.Count ? b1.digits[i] : 0;
+                int digit2 = i < b1.digits.Count ? b1.digits[i] : 0;
+
+                if (digit1 >= digit2)
+                    result.digits.Add((byte)(digit1 - digit2));
+                else
+                {
+                    // TODO: Find first non-0 & replace all others w/ 9
+                    int j = i+1;
+                    while (b1.digits[j] == 0)
+                    {
+                        b1.digits[j] = 9;
+                        j++;
+                    }
+
+                    result.digits.Add((byte)(10 + digit1 - digit2));
+                }
+            }
+
+
 
             return result;
         }
